@@ -1,0 +1,46 @@
+typedef struct SHAstate_st {
+    SHA_LONG h0, h1, h2, h3, h4;
+    SHA_LONG Nl, Nh;
+    SHA_LONG data[SHA_LBLOCK];
+    unsigned int num;
+} SHA_CTX;
+
+
+# define SHA_LONG unsigned int
+
+# define SHA_LBLOCK      16
+
+typedef struct SHA512state_st {
+    SHA_LONG64 h[8];
+    SHA_LONG64 Nl, Nh;
+    union {
+        SHA_LONG64 d[SHA_LBLOCK];
+        unsigned char p[SHA512_CBLOCK];
+    } u;
+    unsigned int num, md_len;
+} SHA512_CTX;
+
+
+	unsigned int state[5];
+
+	//h_data = (unsigned char *)((SHA512_CTX *)mdctx->md_data)->h;
+
+
+---
+typedef struct {
+	BYTE data[64];
+	unsigned int datalen;
+	unsigned long long bitlen;
+	unsigned int state[5];
+	unsigned int k[4];
+} SHA1_CTX;
+
+
+typedef struct {
+  uint64_t total[2];         /*!< number of bytes processed  */
+  uint64_t state[8];         /*!< intermediate digest state  */
+  unsigned char buffer[128]; /*!< data block being processed */
+} sha512_context;
+
+
+
